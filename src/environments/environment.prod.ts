@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'https://dummyapi.io',
+  baseUrl: 'https://stack-blog-api.onrender.com/stack/api/v1',
 };
