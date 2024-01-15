@@ -8,7 +8,7 @@
   }
 ],
 "functions": {
-  "api/index.js": {
+  "api/**/*.js": {
     "includeFiles": "dist/stack-build-blog/browser/**"
   }
 }
