@@ -1,7 +1,6 @@
 {"version": 2,
 "public": true,
 "name": "stack-build-blog",
-"devCommand": "node dist/stack-build-blog/server/main.js",
 "rewrites": [
   {
     "source": "/(.*)",
