@@ -5,12 +5,14 @@ import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
 import { existsSync } from 'fs';
 import { join } from 'path';
+import * as cors from 'cors';
 
 import { AppServerModule } from './src/main.server';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
+  server.use(cors());
   const distFolder = join(process.cwd(), 'dist/stack-build-blog/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html'))
     ? 'index.original.html'
