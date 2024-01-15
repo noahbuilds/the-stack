@@ -4,13 +4,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build-dev": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "dev:ssr": "ng run stack-build-blog:serve-ssr",
     "serve:ssr": "node dist/stack-build-blog/server/main.js",
     "build:ssr": "ng build && ng run stack-build-blog:server",
-    "prerender": "ng run stack-build-blog:prerender"
+    "prerender": "ng run stack-build-blog:prerender",
+    "vercel-build": "npm run build:ssr"
   },
   "private": true,
   "dependencies": {
