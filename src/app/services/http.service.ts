@@ -2,7 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { BlogPreview } from '../models/blog';
+import {
+  Blog,
+  BlogList,
+  BlogPreview,
+  EditBlog,
+  Login,
+  NewBlog,
+} from '../models/blog';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root',
@@ -10,17 +18,44 @@ import { BlogPreview } from '../models/blog';
 export class HttpService {
   constructor(private http: HttpClient) {}
 
-  fetchBlogs(): Observable<BlogPreview[]> {
-    return this.http.get<BlogPreview[]>(`${environment.baseUrl}/post`);
+  fetchBlogs(limit: number, page: number): Observable<BlogList> {
+    return this.http.get<BlogList>(
+      `${environment.baseUrl}/blog?limit=${limit}&page=${page}`
+    );
   }
 
-  fetchBlogById(id: string) {}
+  fetchBlogById(id: string): Observable<BlogPreview> {
+    return this.http.get<BlogPreview>(`${environment.baseUrl}/blog/${id}`);
+  }
 
-  createBlog() {}
+  createBlog(payload: NewBlog): Observable<BlogPreview> {
+    return this.http.post<BlogPreview>(`${environment.baseUrl}/blog`, payload);
+  }
 
-  updateBlog() {}
+  updateBlog(id: string, payload: EditBlog): Observable<any> {
+    return this.http.put(`${environment.baseUrl}/blog/${id}`, payload);
+  }
 
-  deleteBlog(id: string) {}
+  deleteBlog(id: string): Observable<string> {
+    return this.http.delete<string>(`${environment.baseUrl}/blog/${id}`);
+  }
 
   addComment() {}
+
+  searchByTitle(
+    title: string,
+    limit: number,
+    page: number
+  ): Observable<BlogList> {
+    return this.http.get<BlogList>(
+      `${environment.baseUrl}/blog?page=${page}&limit=${limit}&title=${title}`
+    );
+  }
+  createAccount(payload: User): Observable<any> {
+    return this.http.post<any>(`${environment.baseUrl}/user`, payload);
+  }
+
+  doLogin(payload: Login): Observable<any> {
+    return this.http.post(`${environment.baseUrl}/user/login`, payload);
+  }
 }

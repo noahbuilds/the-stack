@@ -1,13 +1,48 @@
 export class Blog {
-  text!: string;
+  title!: string;
+  body!: string;
   image!: string;
-  likes!: number;
-  tags!: Array<any>;
-  owner!: string;
+  // likes!: number;
+  author!: {
+    username: string;
+    email: string;
+    _id: string;
+  };
 }
 
 export class BlogPreview extends Blog {
-  id!: string;
+  _id!: string;
 
-  publishDate!: string;
+  createdAt!: string;
+  updatedAt!: string;
+}
+
+export class BlogList {
+  data!: BlogPreview[];
+  total!: number;
+  page!: number;
+  limit!: number;
+}
+
+export class EditBlog {
+  body!: string;
+  image!: string;
+
+  // tags!: Array<string>;
+  title!: string;
+}
+
+export class NewBlog {
+  body!: string;
+  image!: string;
+  // tags!: Array<string>;
+  author!: string;
+  title!: string;
+}
+
+
+
+export class Login {
+  email!: string;
+  password!: string;
 }

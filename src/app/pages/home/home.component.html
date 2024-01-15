@@ -1,1 +1,116 @@
-<p>home works!</p>
+<body>
+  <!-- Navigation-->
+  <app-nav-bar></app-nav-bar>
+  <!-- Page Header-->
+  <header  class="masthead" style="background-image: url('assets/home-bg.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <div class="site-heading text-center text-white">
+            <h1>
+              Stack
+              <span class="bg-white">
+                <span class="text-primary">Blog</span></span
+              >
+            </h1>
+            <span class="subheading">Your Favourite blog</span>
+          </div>
+
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              name="title"
+              placeholder="Search by title"
+              [(ngModel)]="title"
+            />
+            <button
+              type="button"
+              class="btn bg-transparent"
+              (click)="title = ''; fetchBlogs()"
+              style="margin-left: -40px; z-index: 100"
+            >
+              <i class="fa fa-times"></i>
+            </button>
+          </div>
+
+          <div class="d-flex justify-content-center mt-2">
+            <button
+              class="btn btn-primary w-25"
+              [disabled]="!title"
+              (click)="searchByTitile()"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Main Content-->
+
+  <div
+    *ngIf="processingFetch"
+    class="d-flex align-items-center justify-content-center"
+    style="height: 60vh"
+  >
+    <div class="d-flex align-items-center gap-2">
+      <div class="spinner-border text-secondary fs-18" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <span class="text-secondary fs-16 flex-grow-1 ms-2"
+        >Loading blogs...</span
+      >
+    </div>
+  </div>
+
+  <ng-container *ngIf="!processingFetch && blogs">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7 hover">
+          <div *ngFor="let blog of blogs.data" (click)="gotoDetails(blog._id)">
+            <!-- Post preview-->
+            <div class="post-preview">
+              <span>
+                <span
+                  [innerHTML]="blog.title"
+                  class="post-title"
+                  style="font-style: italic"
+                >
+                  <!-- {{ blog.text | uppercase }} -->
+                </span>
+                <!-- <h3 class="post-subtitle">
+                  Problems look mighty small from 150 miles up
+                </h3> -->
+              </span>
+              <p class="post-meta">
+                Posted by
+                <a href="#!">{{ blog.author.username }}</a>
+                on {{ blog.createdAt | date }}
+              </p>
+            </div>
+            <!-- <ng-container *ngFor="let tag of blog.tags">
+              <div class="badge bg-primary mx-1">
+                {{ tag }}
+              </div>
+            </ng-container> -->
+            <!-- Divider-->
+            <hr class="my-4" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <!-- Pager-->
+  <div class="d-flex justify-content-center mb-4">
+    <p-paginator
+      *ngIf="blogs"
+      (onPageChange)="onPageChange($event)"
+      [totalRecords]="blogs.total"
+      [rows]="limit"
+    ></p-paginator>
+  </div>
+
+  <!-- Footer-->
+  <app-footer></app-footer>
+</body>

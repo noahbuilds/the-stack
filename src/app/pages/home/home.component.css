@@ -1,0 +1,42 @@
+.masthead {
+  position: relative;
+  margin-bottom: 3rem;
+  padding-top: calc(8rem + 57px);
+  padding-bottom: 8rem;
+  background: no-repeat center center;
+  background-color: #6c757d;
+  background-size: cover;
+  background-attachment: scroll;
+}
+.masthead:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #212529;
+  opacity: 0.5;
+}
+
+/* masthead .page-heading,
+masthead .site-heading {
+  text-align: center;
+} */
+
+.hover{
+cursor: pointer;
+}
+
+
+
+
+
+@media (min-width: 992px) {
+  masthead {
+    padding-top: 12.5rem;
+    padding-bottom: 12.5rem;
+  }
+
+
+}
