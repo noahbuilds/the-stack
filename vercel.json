@@ -1,0 +1,15 @@
+{"version": 2,
+"public": true,
+"name": "stack-build-blog",
+"rewrites": [
+  {
+    "source": "/(.*)",
+    "destination": "/api"
+  }
+],
+"functions": {
+  "api/index.js": {
+    "includeFiles": "dist/stack-build-blog/**"
+  }
+}
+}
