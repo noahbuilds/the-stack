@@ -26,7 +26,7 @@ This project is a simple blogging platform developed using Angular, incorporatin
 
 The project follows a standard Angular project structure:
 
-markdownCopy code
+
 
 `- src/
  - app/
@@ -104,7 +104,7 @@ markdownCopy code
 ## Deployment:
 
 -   **Service:**
-    -   The website is deployed on like Vercel.
+    -   The website is deployed on Vercel.
 
 ## Bonus Features:
 
@@ -128,4 +128,4 @@ markdownCopy code
 
 ## Conclusion:
 
-This Angular-based blogging platform successfully implements the required features, adheres to best practices, provides a seamless user experience with SSR, and includes user authentication for secure blog post management. The additional bonus features enhance the overall functionality and aesthetics of the application. The deployment ensures accessibility for users
+This Angular-based blogging platform successfully implements the required features, adheres to best practices, provides a seamless user experience with SSR, and includes user authentication for secure blog post management. The deployment ensures accessibility for users
