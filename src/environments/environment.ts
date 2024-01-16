@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
   // baseUrl: 'https://dummyapi.io',
-  baseUrl: 'https://stack-blog-api.onrender.com/stack/api/v1',
+  baseUrl: 'https://3489-102-91-4-29.ngrok-free.app/stack/api/v1',
 };
